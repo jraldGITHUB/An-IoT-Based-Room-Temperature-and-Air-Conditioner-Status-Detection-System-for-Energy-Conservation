@@ -11,7 +11,6 @@
 
 <body>
 
-
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
   <div class="container">
     <a class="navbar-brand fw-bold fs-4" href="dashboard.html">IoT Room Monitor</a>
@@ -31,25 +30,31 @@
   </div>
 </nav>
 
-<!-- DASHBOARD -->
 <section class="container my-5">
   <h2 class="text-center mb-4">Room Status</h2>
 
   <div class="row g-4 justify-content-center">
 
-    <!-- Temperature Card -->
-    <div class="col-12 col-md-5 col-lg-4">
+  
+    <div class="col-12 col-md-4">
       <div class="status-card text-center">
         <p class="label">Temperature</p>
         <h1 id="temp">-- °C</h1>
       </div>
     </div>
 
-    <!-- Aircon Card -->
-    <div class="col-12 col-md-5 col-lg-4">
+    
+    <div class="col-12 col-md-4">
       <div class="status-card text-center">
         <p class="label">Air Conditioner</p>
         <h1 id="acStatus">--</h1>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="status-card text-center">
+        <p class="label">Exhaust Fan</p>
+        <h1 id="fanStatus">--</h1>
       </div>
     </div>
 
@@ -59,7 +64,6 @@
     <button class="btn btn-success px-4" id="refreshBtn">Refresh</button>
   </div>
 </section>
-
 
 <script src="dashboard.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

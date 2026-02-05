@@ -1,25 +1,32 @@
-document.querySelector(".btn-success").addEventListener("click", updateStatus);
+document.getElementById("refreshBtn").addEventListener("click", updateStatus);
 
 function updateStatus() {
-  const tempElement = document.getElementById("temp");
-  const acElement = document.getElementById("acStatus");
+  const tempEl = document.getElementById("temp");
+  const acEl = document.getElementById("acStatus");
+  const fanEl = document.getElementById("fanStatus");
+  
+  const roomTemp = Math.floor(Math.random() * 8) + 23; 
+  const exhaustTemp = roomTemp - Math.floor(Math.random() * 5); 
+  const fanStatus = roomTemp >= 26 ? "ON" : "OFF";         
+  const acStatus = exhaustTemp <= 24 ? "ON" : "OFF";        
 
-  const temperature = Math.floor(Math.random() * 8) + 23; 
-  const acStatus = temperature >= 26 ? "ON" : "OFF";
 
-  tempElement.textContent = temperature + " °C";
-  acElement.textContent = acStatus;
+  tempEl.textContent = roomTemp + " °C";
+  acEl.textContent = acStatus;
+  fanEl.textContent = fanStatus;
 
+  
   const log = {
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString(),
-    temperature: temperature,
-    acStatus: acStatus
+    roomTemp: roomTemp,
+    exhaustTemp: exhaustTemp,
+    aircon: acStatus,
+    exhaustFan: fanStatus
   };
 
-  
+
   let logs = JSON.parse(localStorage.getItem("roomLogs")) || [];
   logs.unshift(log);
-
   localStorage.setItem("roomLogs", JSON.stringify(logs));
 }

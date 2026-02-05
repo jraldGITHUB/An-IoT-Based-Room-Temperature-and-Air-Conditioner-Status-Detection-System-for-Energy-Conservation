@@ -11,7 +11,7 @@
 
 <body>
 
-<!-- NAVBAR -->
+
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
   <div class="container">
     <a class="navbar-brand fw-bold fs-4" href="index.html">IoT Room Monitor</a>
@@ -31,20 +31,24 @@
   </div>
 </nav>
 
-<!-- LOGS -->
+
 <section class="container my-5">
   <h2 class="text-center mb-4">Temperature & Aircon Logs</h2>
 
   <div class="table-responsive">
     <table class="table table-bordered table-hover text-center align-middle">
       <thead class="table-success">
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Temperature (°C)</th>
-          <th>Aircon Status</th>
-        </tr>
-      </thead>
+     
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Room Temp (°C)</th>
+    <th>Exhaust Temp (°C)</th>
+    <th>Aircon Status</th>
+    <th>Exhaust Fan</th>
+  </tr>
+</thead>
+
       <tbody id="logTable">
 
       </tbody>
