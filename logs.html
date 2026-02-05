@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IoT Room Monitor | Dashboard</title>
+  <title>IoT Room Monitor | Logs</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,57 +11,52 @@
 
 <body>
 
-
+<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
   <div class="container">
-    <a class="navbar-brand fw-bold fs-4" href="dashboard.html">IoT Room Monitor</a>
+    <a class="navbar-brand fw-bold fs-4" href="index.html">IoT Room Monitor</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="dashboard.html">Dashboard</a>
+          <a class="nav-link" href="Web.html">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="logs.html">Logs</a>
+          <a class="nav-link active" href="#">Logs</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- DASHBOARD -->
+<!-- LOGS -->
 <section class="container my-5">
-  <h2 class="text-center mb-4">Room Status</h2>
+  <h2 class="text-center mb-4">Temperature & Aircon Logs</h2>
 
-  <div class="row g-4 justify-content-center">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center align-middle">
+      <thead class="table-success">
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Temperature (°C)</th>
+          <th>Aircon Status</th>
+        </tr>
+      </thead>
+      <tbody id="logTable">
 
-    <!-- Temperature Card -->
-    <div class="col-12 col-md-5 col-lg-4">
-      <div class="status-card text-center">
-        <p class="label">Temperature</p>
-        <h1 id="temp">-- °C</h1>
-      </div>
-    </div>
-
-    <!-- Aircon Card -->
-    <div class="col-12 col-md-5 col-lg-4">
-      <div class="status-card text-center">
-        <p class="label">Air Conditioner</p>
-        <h1 id="acStatus">--</h1>
-      </div>
-    </div>
-
+      </tbody>
+    </table>
   </div>
 
   <div class="text-center mt-4">
-    <button class="btn btn-success px-4" id="refreshBtn">Refresh</button>
+    <button class="btn btn-primary" id="addLogBtn">Add Log</button>
   </div>
 </section>
 
-
-<script src="dashboard.js"></script>
+<script src="logs.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
