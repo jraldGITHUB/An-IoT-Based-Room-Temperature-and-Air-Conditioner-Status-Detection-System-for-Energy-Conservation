@@ -20,5 +20,66 @@ h1 {
   color: #198754; 
 }
 
+body{
+  background:#f2f3f5;
+  font-family: Arial, sans-serif;
+}
+
+
+.navbar{
+  background:rgb(173, 212, 252);
+}
+
+
+.section-title{
+  font-weight:600;
+  color:#000000;
+}
+
+
+.status-card{
+  background:rgb(174, 216, 182);
+  border-radius:12px;
+  padding:30px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+.status-card:hover{
+  transform:translateY(-3px);
+}
+
+
+.label{
+  font-size:14px;
+  color:#242424;
+  margin-bottom:10px;
+}
+
+.value{
+  font-size:38px;
+  font-weight:bold;
+}
+
+
+.temp{
+  color:#f30909;
+}
+
+
+.on{
+  color:#28a745;
+}
+
+.off{
+  color:#dc3545;
+}
+
+
+.refresh-btn{
+  padding:10px 30px;
+  font-weight:500;
+  border-radius:8px;
+}
 
 
