@@ -38,18 +38,3 @@ max-height:300px;
 }
 
 
-/* DARK MODE */
-
-.dark-mode{
-background:#121212;
-color:white;
-}
-
-.dark-mode .card{
-background:#1f1f1f;
-color:white;
-}
-
-.dark-mode .navbar{
-background:black;
-}

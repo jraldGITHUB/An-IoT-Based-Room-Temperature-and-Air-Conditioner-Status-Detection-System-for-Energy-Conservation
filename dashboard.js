@@ -66,6 +66,7 @@ acStart:null
 
 let selectedRoom="room1";
 
+
 /* MAP */
 
 let map;
@@ -89,7 +90,7 @@ r.circle=L.circle([r.lat,r.lng],{
 color:"yellow",
 fillColor:"yellow",
 fillOpacity:0.2,
-radius:10
+radius:15
 }).addTo(map);
 
 r.circle.bindPopup(r.name);
@@ -115,6 +116,9 @@ const tempEl=document.getElementById("temp");
 const acEl=document.getElementById("acStatus");
 const fanEl=document.getElementById("fanStatus");
 const avgEl=document.getElementById("avgTemp");
+const minEl=document.getElementById("minTemp");
+const maxEl=document.getElementById("maxTemp");
+const runtimeEl=document.getElementById("acRuntime");
 const roomName=document.getElementById("roomName");
 
 
@@ -131,7 +135,14 @@ if(room.temps.length>20){
 room.temps.shift();
 }
 
+
+/* TEMPERATURE STATISTICS */
+
 let avgTemp=(room.temps.reduce((a,b)=>a+b,0)/room.temps.length).toFixed(1);
+
+let minTemp=Math.min(...room.temps);
+let maxTemp=Math.max(...room.temps);
+
 
 const fanStatus=roomTemp>=26?"ON":"OFF";
 const acStatus=exhaustTemp<=24?"ON":"OFF";
@@ -147,15 +158,21 @@ if(acStatus==="OFF"){
 room.acStart=null;
 }
 
+let runtime="0 min";
+
 if(room.acStart){
 
-let diff=(new Date()-room.acStart)/3600000;
+let diff=(new Date()-room.acStart)/60000;
 
-if(diff>=5 && diff<=8){
-alert(room.name+" Aircon running for "+diff.toFixed(1)+" hours");
+if(diff<60){
+runtime=diff.toFixed(1)+" min";
+}else{
+runtime=(diff/60).toFixed(2)+" hrs";
 }
 
 }
+
+runtimeEl.textContent=runtime;
 
 
 /* DASHBOARD */
@@ -164,6 +181,8 @@ roomName.textContent=room.name;
 
 tempEl.textContent=roomTemp+" °C";
 avgEl.textContent=avgTemp+" °C";
+minEl.textContent=minTemp+" °C";
+maxEl.textContent=maxTemp+" °C";
 
 acEl.textContent=acStatus;
 fanEl.textContent=fanStatus;
@@ -190,16 +209,20 @@ chartData.shift();
 tempChart.update();
 
 
-/* MAP COLOR */
+/* HEATMAP TEMPERATURE COLOR */
 
 let zoneColor="yellow";
 
-if(acStatus==="OFF"){
+if(roomTemp<=23){
+zoneColor="blue";
+}
+
+else if(roomTemp>=28){
 zoneColor="red";
 }
 
-if(acStatus==="ON"){
-zoneColor="blue";
+else{
+zoneColor="yellow";
 }
 
 room.circle.setStyle({
@@ -211,7 +234,8 @@ room.circle.bindPopup(
 "<b>"+room.name+"</b><br>"+
 "Temperature: "+roomTemp+"°C<br>"+
 "Aircon: "+acStatus+"<br>"+
-"Fan: "+fanStatus
+"Fan: "+fanStatus+"<br>"+
+"AC Runtime: "+runtime
 );
 
 
@@ -223,9 +247,12 @@ document.getElementById("lastUpdate").innerText=now.toLocaleTimeString();
 
 /* SAVE LOG */
 
-let logs=JSON.parse(localStorage.getItem("roomLogs"))||[];
-
-logs.push({
+fetch("save_logs.php",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
 
 date:now.toLocaleDateString(),
 time:now.toLocaleTimeString(),
@@ -233,21 +260,16 @@ room:room.name,
 roomTemp:roomTemp,
 exhaustTemp:exhaustTemp,
 aircon:acStatus,
-exhaustFan:fanStatus
+exhaustFan:fanStatus,
+runtime:runtime
+
+})
 
 });
 
-if(logs.length>100){
-logs.shift();
 }
-
-localStorage.setItem("roomLogs",JSON.stringify(logs));
-
-}
-
-
 /* AUTO REFRESH */
 
 setInterval(function(){
 updateStatus();
-},5000);
+},30000);
