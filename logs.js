@@ -1,18 +1,20 @@
 document.addEventListener("DOMContentLoaded", loadLogs);
 
 function loadLogs() {
-  const table = document.getElementById("logTable");
-  const logs = JSON.parse(localStorage.getItem("roomLogs")) || [];
 
-  table.innerHTML = "";
+const table = document.getElementById("logTable");
 
-  logs.forEach(log => {
-    const row = document.createElement("tr");
+const logs = JSON.parse(localStorage.getItem("roomLogs")) || [];
 
-   row.innerHTML = `
+table.innerHTML = "";
+
+logs.forEach(log => {
+
+const row = document.createElement("tr");
+
+row.innerHTML = `
 <td>${log.date}</td>
 <td>${log.time}</td>
-<td><strong>${log.room}</strong></td>
 <td>${log.roomTemp}°C</td>
 <td>${log.exhaustTemp}°C</td>
 <td>
@@ -27,7 +29,36 @@ ${log.exhaustFan}
 </td>
 `;
 
-    table.appendChild(row);
-  });
+table.appendChild(row);
+
+});
+
+countLogs();
+
 }
 
+
+/* CLEAR LOGS BUTTON */
+
+document.getElementById("clearLogs").addEventListener("click",function(){
+
+localStorage.removeItem("roomLogs");
+
+loadLogs();
+
+});
+
+
+/* TOTAL LOG COUNTER */
+
+function countLogs(){
+
+const logs = JSON.parse(localStorage.getItem("roomLogs")) || [];
+
+const counter = document.getElementById("logCount");
+
+if(counter){
+counter.innerText = logs.length;
+}
+
+}

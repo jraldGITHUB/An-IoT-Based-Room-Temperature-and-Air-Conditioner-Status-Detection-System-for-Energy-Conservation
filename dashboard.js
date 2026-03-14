@@ -20,10 +20,19 @@ fill: true
 options: {
 responsive: true,
 plugins: {
-legend: { display: true }
+legend: { display: true },
+title:{
+display:true,
+text:"Room Temperature Monitoring"
+}
 },
 scales: {
-y: { beginAtZero: false }
+y: {
+beginAtZero: false,
+ticks:{
+callback:value => value+"°C"
+}
+}
 }
 }
 });
@@ -60,7 +69,7 @@ let map;
 
 document.addEventListener("DOMContentLoaded", function(){
 
-map = L.map('map').setView([8.359634, 124.869002],17);
+map = L.map('map').setView([8.359634, 124.869002],200);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 attribution:'© OpenStreetMap'
@@ -76,8 +85,8 @@ let r = rooms[key];
 r.circle = L.circle([r.lat,r.lng],{
 color:"yellow",
 fillColor:"yellow",
-fillOpacity:0.5,
-radius:7
+fillOpacity:0.2,
+radius:10
 }).addTo(map);
 
 r.circle.bindPopup(r.name);
@@ -95,7 +104,6 @@ alert("Selected "+r.name);
 }
 
 });
-
 
 
 function updateStatus(){
@@ -125,6 +133,14 @@ const acStatus = exhaustTemp <= 24 ? "ON":"OFF";
 tempEl.textContent = roomTemp+" °C";
 acEl.textContent = acStatus;
 fanEl.textContent = fanStatus;
+
+
+
+
+/* STATUS COLORS */
+
+acEl.style.color = acStatus === "ON" ? "red" : "green";
+fanEl.style.color = fanStatus === "ON" ? "orange" : "gray";
 
 
 /* CHART */
@@ -170,8 +186,61 @@ fillColor:zoneColor
 
 room.circle.bindPopup(
 
-room.name+"<br>Temp: "+roomTemp+"°C<br>Aircon: "+acStatus
+"<b>"+room.name+"</b><br>"+
+"Temperature: "+roomTemp+"°C<br>"+
+"Aircon: "+acStatus+"<br>"+
+"Fan: "+fanStatus
 
 );
 
+function updateTime(){
+
+const now = new Date();
+
+const element = document.getElementById("lastUpdate");
+
+if(element){
+element.innerText = now.toLocaleTimeString();
 }
+
+}
+
+setInterval(updateTime,3000);
+
+
+/* SAVE LOG */
+
+let logs = JSON.parse(localStorage.getItem("roomLogs")) || [];
+
+let now = new Date();
+
+logs.push({
+
+date: now.toLocaleDateString(),
+time: now.toLocaleTimeString(),
+room: room.name,
+roomTemp: roomTemp,
+exhaustTemp: exhaustTemp,
+aircon: acStatus,
+exhaustFan: fanStatus
+
+});
+
+if(logs.length > 100){
+
+logs.shift();
+
+}
+
+localStorage.setItem("roomLogs", JSON.stringify(logs));
+
+}
+
+
+/* AUTO REFRESH EVERY 5 SECONDS */
+
+setInterval(function(){
+
+updateStatus();
+
+},5000);

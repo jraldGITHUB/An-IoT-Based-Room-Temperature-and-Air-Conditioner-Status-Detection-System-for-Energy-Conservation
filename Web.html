@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>IoT Room Monitor | Dashboard</title>
 
-<link rel="stylesheet" href="style.css">
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -18,18 +18,16 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg shadow-sm py-3">
+<nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
+
 <div class="container">
 
 <a class="navbar-brand fw-bold fs-4" href="Web.html">
 IoT Room Monitor
 </a>
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-<span class="navbar-toggler-icon"></span>
-</button>
+<div class="collapse navbar-collapse">
 
-<div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
@@ -41,57 +39,140 @@ IoT Room Monitor
 </li>
 
 </ul>
+
 </div>
 
 </div>
+
 </nav>
 
-<div class="container mt-4">
-<div id="map"></div>
+<div class="container mt-3">
+
+<div class="alert alert-success text-center shadow-sm">
+System Status : <strong>Online Monitoring Active</strong>
 </div>
 
-<section class="container my-5">
-
-<h2 class="text-center mb-5 section-title">Room Status</h2>
-
-<div class="row g-4 justify-content-center">
-
-<div class="col-12 col-md-4">
-<div class="status-card text-center">
-<p class="label">🌡 Temperature</p>
-<h1 class="value temp" id="temp">-- °C</h1>
-</div>
-</div>
-
-<div class="col-12 col-md-4">
-<div class="status-card text-center">
-<p class="label">❄ Air Conditioner</p>
-<h1 class="value" id="acStatus">--</h1>
-</div>
-</div>
-
-<div class="col-12 col-md-4">
-<div class="status-card text-center">
-<p class="label">🌀 Exhaust Fan</p>
-<h1 class="value" id="fanStatus">--</h1>
-</div>
+<div class="alert alert-secondary text-center shadow-sm">
+Last Update : <span id="lastUpdate">--</span>
 </div>
 
 </div>
 
-<div class="text-center mt-5">
-<button class="btn btn-success refresh-btn" id="refreshBtn">
-Refresh Data
-</button>
+<section class="container-fluid px-4 my-4">
+
+<h3 class="mb-4 fw-bold">Room Monitoring Dashboard</h3>
+
+<div class="row g-4">
+
+<div class="col-lg-7">
+
+<div class="card shadow-sm">
+
+<div class="card-header bg-success text-white">
+Live Room Map
 </div>
 
-<div class="row mt-5">
+<div class="card-body p-0">
+
+<div id="map" style="height:420px;"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-5">
+
+<div class="row g-3">
+
 <div class="col-12">
-<div class="status-card">
-<h4 class="text-center mb-3">📈 Room Temperature History</h4>
+
+<div class="card shadow-sm text-center">
+
+<div class="card-body">
+
+<h6 class="text-muted">Temperature</h6>
+
+<h1 class="fw-bold text-danger" id="temp">-- °C</h1>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-md-6">
+
+<div class="card shadow-sm text-center">
+
+<div class="card-body">
+
+<h6 class="text-muted">Air Conditioner</h6>
+
+<h3 class="fw-bold" id="acStatus">--</h3>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-md-6">
+
+<div class="card shadow-sm text-center">
+
+<div class="card-body">
+
+<h6 class="text-muted">Exhaust Fan</h6>
+
+<h3 class="fw-bold" id="fanStatus">--</h3>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="col-12">
+
+<button class="btn btn-success w-100 py-2" id="refreshBtn">
+Refresh Sensor Data
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="row mt-4">
+
+<div class="col-12">
+
+<div class="card shadow-sm">
+
+<div class="card-header">
+Temperature History
+</div>
+
+<div class="card-body">
+
 <canvas id="tempChart"></canvas>
+
 </div>
+
 </div>
+
+</div>
+
 </div>
 
 </section>
