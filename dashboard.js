@@ -164,11 +164,16 @@ if(room.acStart){
 
 let diff=(new Date()-room.acStart)/60000;
 
-if(diff<60){
-runtime=diff.toFixed(1)+" min";
+let hours=Math.floor(diff/60);
+let minutes=Math.floor(diff%60);
+
+if(hours>0){
+runtime=hours+" hrs "+minutes+" mins";
 }else{
-runtime=(diff/60).toFixed(2)+" hrs";
+runtime=minutes+" mins";
 }
+
+
 
 }
 

@@ -1,6 +1,17 @@
 <?php
 
 include "db.php";
+include "send_email.php";
+
+if(strpos($runtime,"hrs") !== false){
+
+$hours = floatval($runtime);
+
+if($hours >= 4){
+sendAlert($room,$runtime);
+}
+
+}
 
 $data = json_decode(file_get_contents("php://input"), true);
 
