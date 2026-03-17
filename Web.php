@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['user'])){
+header("Location: login.html");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +30,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
 <div class="container">
 
-<a class="navbar-brand fw-bold fs-4" href="Web.html">
+<a class="navbar-brand fw-bold fs-4" href="Web.php">
 IoT Room Monitor
 </a>
 
@@ -36,6 +45,8 @@ IoT Room Monitor
 <li class="nav-item">
 <a class="nav-link" href="logs.html">Logs</a>
 </li>
+
+<a class="btn btn-danger ms-3" href="logout.php">Logout</a>
 
 </ul>
 
