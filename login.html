@@ -1,14 +1,23 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html>
 <head>
 
 <title>IoT Room Monitor Login</title>
+=======
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | IoT Room Monitor</title>
+>>>>>>> cb1ebfbf5700bf3d1514771286b95310a4a869a8
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 
 body{
+<<<<<<< HEAD
 background:#0f172a;
 display:flex;
 justify-content:center;
@@ -23,6 +32,19 @@ padding:40px;
 border-radius:12px;
 width:350px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
+=======
+background:#f4f6f9;
+}
+
+.login-card{
+max-width:400px;
+margin:auto;
+margin-top:120px;
+padding:30px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+>>>>>>> cb1ebfbf5700bf3d1514771286b95310a4a869a8
 }
 
 </style>
@@ -31,6 +53,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
 <body>
 
+<<<<<<< HEAD
 <div class="login-box">
 
 <h3 class="text-center mb-4">IoT Room Monitor</h3>
@@ -42,10 +65,71 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
 
 <button class="btn btn-success w-100">Login</button>
+=======
+<div class="container">
+
+<div class="login-card">
+
+<h3 class="text-center mb-4">IoT Room Monitor</h3>
+
+<form id="loginForm">
+
+<div class="mb-3">
+<label class="form-label">Username</label>
+<input type="text" id="username" class="form-control" required>
+</div>
+
+<div class="mb-3">
+<label class="form-label">Password</label>
+<input type="password" id="password" class="form-control" required>
+</div>
+
+<div class="d-grid">
+<button type="submit" class="btn btn-primary">Login</button>
+</div>
+
+<p class="text-danger text-center mt-3" id="errorMsg"></p>
+>>>>>>> cb1ebfbf5700bf3d1514771286b95310a4a869a8
 
 </form>
 
 </div>
 
+<<<<<<< HEAD
+=======
+</div>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+
+// sample credentials
+const correctUser = "admin";
+const correctPass = "1234";
+
+if(username === correctUser && password === correctPass){
+
+// save login session
+localStorage.setItem("loggedIn","true");
+
+// redirect to dashboard
+window.location.href = "Web.php";
+
+}else{
+
+document.getElementById("errorMsg").innerText = "Invalid username or password";
+
+}
+
+});
+
+</script>
+
+>>>>>>> cb1ebfbf5700bf3d1514771286b95310a4a869a8
 </body>
 </html>
