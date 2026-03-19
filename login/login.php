@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "db.php";
+include "../db.php";
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -13,7 +13,7 @@ if(mysqli_num_rows($result) == 1){
 
 $_SESSION['user'] = $username;
 
-header("Location: Web.php");
+header("Location: index.php");
 
 }else{
 

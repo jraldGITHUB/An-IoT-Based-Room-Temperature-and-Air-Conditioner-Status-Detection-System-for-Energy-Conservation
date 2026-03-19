@@ -29,6 +29,8 @@ $sql = "INSERT INTO room_logs
 VALUES
 ('$date','$time','$room','$roomTemp','$exhaustTemp','$aircon','$exhaustFan','$runtime')";
 
+$conn->query("INSERT INTO device_logs (device_id, status) 
+VALUES ('$device_id', '$status')");
 $conn->query($sql);
 
 echo "saved";

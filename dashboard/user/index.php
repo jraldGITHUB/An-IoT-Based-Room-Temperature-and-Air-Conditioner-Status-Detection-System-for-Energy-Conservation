@@ -22,7 +22,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
 <div class="container">
 
-<a class="navbar-brand fw-bold fs-4" href="Web.php">
+<a class="navbar-brand fw-bold fs-4" href="index.php">
 IoT Room Monitor
 </a>
 
@@ -31,7 +31,7 @@ IoT Room Monitor
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
-<a class="nav-link active fw-semibold" href="Web.php">Dashboard</a>
+<a class="nav-link active fw-semibold" href="index.php">Dashboard</a>
 </li>
 
 <li class="nav-item">
@@ -169,7 +169,7 @@ Temperature History
 </section>
 
 
-<script src="dashboard.js"></script>
+<script src="script.js"></script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
