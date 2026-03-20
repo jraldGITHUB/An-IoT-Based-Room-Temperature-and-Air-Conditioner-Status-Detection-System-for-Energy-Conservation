@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username'])){
+    header("Location: ../login/index.php");
+    exit();
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +40,14 @@ IoT Room Monitor
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
-<a class="nav-link active fw-semibold" href="index.php">Dashboard</a>
+<a class="nav-link active fw-semibold" href="../manager/index.php">Dashboard</a>
 </li>
 
 <li class="nav-item">
-<a class="nav-link" href="logs.html">Logs</a>
+<a class="nav-link" href="../manager/logs_page/index.html">Logs</a>
 </li>
 
-<a class="btn btn-danger ms-3" href="logout.php">Logout</a>
+<a class="btn btn-danger ms-3" href="../../login/logout.php">Logout</a>
 
 </ul>
 
