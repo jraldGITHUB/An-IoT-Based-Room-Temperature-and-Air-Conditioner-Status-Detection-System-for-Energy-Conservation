@@ -1,0 +1,90 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username'])){
+    header("Location: ../../../login/index.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IoT Room Monitor | Logs</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light shadow-sm py-3">
+<div class="container">
+
+<a class="navbar-brand fw-bold fs-4" href="../index.php">
+IoT Room Monitor
+</a>
+
+<div class="collapse navbar-collapse">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="../../user/index.php">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link active" href="#">Logs</a></li>
+<li class="nav-item">
+<a class="nav-link" href="../../../login/logout.php">Logout</a>
+</li>
+
+</ul>
+</div>
+
+</div>
+</nav>
+
+<div class="text-center mb-3">
+<select id="roomFilter" class="form-select w-auto d-inline">
+<option value="all">All Rooms</option>
+</select>
+</div>
+
+<section class="container my-5">
+
+<h2 class="text-center mb-4">Temperature & Aircon Logs</h2>
+
+<div class="table-responsive">
+
+<table class="table table-bordered table-hover text-center align-middle">
+
+<thead class="table-success">
+<tr>
+<th>Date</th>
+<th>Time</th>
+<th>Room</th>
+<th>Room Temp (°C)</th>
+<th>Exhaust Temp (°C)</th>
+<th>Aircon Status</th>
+<th>Exhaust Fan</th>
+<th>Runtime</th>
+</tr>
+</thead>
+
+<tbody id="logTable"></tbody>
+
+</table>
+
+</div>
+
+<div class="text-center mt-4">
+<button class="btn btn-success" onclick="downloadCSV()">Download CSV</button>
+
+
+</section>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

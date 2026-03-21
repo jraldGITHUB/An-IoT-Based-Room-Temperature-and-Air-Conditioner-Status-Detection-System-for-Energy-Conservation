@@ -64,7 +64,9 @@ IoT Room Monitor
 <li class="nav-item">
 <a class="nav-link active fw-semibold" href="../user/index.php">Dashboard</a>
 </li>
-
+<li class="nav-item">
+<a class="nav-link active " href="../user/logs_page/index.php">Logs</a>
+</li>
 
 
 <li class="nav-item">

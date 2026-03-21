@@ -1,0 +1,134 @@
+body{
+background:#0f172a;
+font-family:Arial, sans-serif;
+color:#e2e8f0;
+}
+
+/* Navbar */
+
+.navbar{
+background:#020617 !important;
+border-bottom:1px solid #1e293b;
+}
+
+.navbar-brand{
+color:#38bdf8 !important;
+}
+
+.nav-link{
+color:#e2e8f0 !important;
+}
+
+.nav-link:hover{
+color:#38bdf8 !important;
+}
+
+/* Cards */
+
+.card{
+background:#1e293b;
+border:none;
+border-radius:14px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card-header{
+background:#334155;
+color:#f1f5f9;
+font-weight:bold;
+border-bottom:none;
+}
+
+
+.card-body{
+color:#e2e8f0;
+}
+
+p{
+color:#cbd5f5;
+}
+
+.text-muted{
+color:#94a3b8 !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+color:#ffffff;
+}
+
+/* Alert */
+
+.alert{
+background:#1e293b;
+border:none;
+color:#e2e8f0;
+}
+
+/* Map */
+
+#map{
+height:400px;
+width:100%;
+border-radius:10px;
+border:1px solid #334155;
+}
+
+/* Chart */
+
+canvas{
+max-height:300px;
+}
+
+/* Buttons */
+
+.btn-success{
+background:#00e755;
+border:none;
+font-weight:bold;
+}
+
+.btn-success:hover{
+background:#16a34a;
+}
+
+/* Temperature */
+
+#temp{
+color:#ef4444;
+}
+
+/* Status */
+
+#acStatus{
+color:#22c55e;
+}
+
+#fanStatus{
+color:#38bdf8;
+}
+
+/* Runtime */
+
+#acRuntime{
+color:#facc15;
+font-weight:bold;
+}
+
+/* Hover effect */
+
+.card:hover{
+transform:translateY(-3px);
+transition:0.3s;
+}
+
+#acStatus{
+color:#22c55e;
+font-size:32px;
+font-weight:bold;
+}
+
+#fanStatus{
+color:#ef4444;
+font-size:32px;
+font-weight:bold;
+}
