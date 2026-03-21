@@ -21,14 +21,8 @@ color:#e2e8f0 !important;
 
 .nav-link:hover{
 color:#38bdf8 !important;
-
-
 }
 
-.nav-item{
-color: #38bdf8;
-
-}
 /* Cards */
 
 .card{
@@ -88,7 +82,7 @@ max-height:300px;
 /* Buttons */
 
 .btn-success{
-background:#00ff5e;
+background:#00e755;
 border:none;
 font-weight:bold;
 }
@@ -137,8 +131,4 @@ font-weight:bold;
 color:#ef4444;
 font-size:32px;
 font-weight:bold;
-}
-.user-info{
-color: white !important;
-font-weight: 600;
 }

@@ -37,6 +37,7 @@ IoT Room Monitor
 <li class="nav-item"><a class="nav-link" href="../../manager/index.php">Dashboard</a></li>
 <li class="nav-item"><a class="nav-link active" href="#">Logs</a></li>
 <li class="nav-item"><a class="nav-link" href="../add_monitor_rooms/index.php">Manage Rooms</a></li>
+<li class="nav-item"><a class="nav-link" href="../activity_logs/index.php">Activity logs</a></li>
 <li class="nav-item"><a class="nav-link" href="../../../login/logout.php">Logout</a></li>
 </ul>
 </div>

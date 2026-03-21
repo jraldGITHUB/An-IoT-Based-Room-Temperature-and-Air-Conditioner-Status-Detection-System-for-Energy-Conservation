@@ -144,6 +144,10 @@ IoT Room Monitor
 </li>
 
 <li class="nav-item">
+<a class="nav-link " href="../account_settings/index.php">Account Settings</a>
+</li>
+
+<li class="nav-item">
 <a class="nav-link" href="../../../login/logout.php">Logout</a>
 </li>
 

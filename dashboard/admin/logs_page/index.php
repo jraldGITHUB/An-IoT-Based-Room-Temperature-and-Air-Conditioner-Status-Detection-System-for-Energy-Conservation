@@ -19,7 +19,7 @@ if(!isset($_SESSION['username'])){
 <title>IoT Room Monitor | Logs</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -34,9 +34,11 @@ IoT Room Monitor
 
 <div class="collapse navbar-collapse">
 <ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="../../user/index.php">Dashboard</a></li>
-<li class="nav-item"><a class="nav-link active" href="#">My Logs</a></li>
-
+<li class="nav-item"><a class="nav-link" href="../../admin/index.php">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link active" href="#">Logs</a></li>
+<li class="nav-item"><a class="nav-link" href="../add_monitor_rooms/index.php">Manage Rooms</a></li>
+<li class="nav-item"><a class="nav-link" href="../activity_logs/index.php">Activity logs</a></li>
+<li class="nav-item"><a class="nav-link" href="../account_settings/index.php">Account Settings</a></li>
 <li class="nav-item"><a class="nav-link" href="../../../login/logout.php">Logout</a></li>
 </ul>
 </div>
@@ -77,7 +79,10 @@ IoT Room Monitor
 
 </div>
 
-
+<div class="text-center mt-4">
+<button class="btn btn-success" onclick="downloadCSV()">Download CSV</button>
+<button class="btn btn-danger ms-2" id="clearLogs">Clear Logs</button>
+</div>
 
 </section>
 

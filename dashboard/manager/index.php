@@ -1,13 +1,28 @@
 <?php
 session_start();
+include "../../db.php";
 
+// PROTECT PAGE
 if(!isset($_SESSION['username'])){
     header("Location: ../../login/index.php");
     exit();
 }
 
-?>
 
+if(isset($_POST['log_refresh'])){
+    
+    $user_id = $_SESSION['user_id'];
+    $action = "Refresh";
+    $details = "Refreshed sensor data on dashboard";
+
+    $stmt = $conn->prepare("INSERT INTO activity_logs (user_id, action, details, created_at) VALUES (?, ?, ?, NOW())");
+    $stmt->bind_param("iss", $user_id, $action, $details);
+    $stmt->execute();
+
+    echo "success";
+    exit(); // VERY IMPORTANT (prevents HTML output)
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +72,10 @@ IoT Room Monitor
 </li>
 
 <li class="nav-item">
+<a class="nav-link" href="../manager/activity_logs/index.php">Activity logs</a>
+</li>
+
+<li class="nav-item">
 <a class="nav-link" href="../../login/logout.php">Logout</a>
 </li>
 
@@ -68,18 +87,13 @@ IoT Room Monitor
 
 <div class="container mt-3">
 
-
-
 <div class="alert alert-secondary text-center shadow-sm">
 Last Update : <span id="lastUpdate">--</span>
 </div>
 
 </div>
 
-
 <section class="container-fluid px-4 my-4">
-
-
 
 <div class="row g-4">
 
@@ -110,7 +124,6 @@ Live Room Map
 </div>
 </div>
 
-
 <div class="col-lg-4">
 
 <div class="card shadow-sm mb-3">
@@ -138,23 +151,17 @@ Room Information
 </div>
 </div>
 
-
 <div class="card shadow-sm text-center mb-3">
 <div class="card-body">
-
 <h6 class="text-muted">Air Conditioner</h6>
 <h3 class="fw-bold" id="acStatus">--</h3>
-
 </div>
 </div>
-
 
 <div class="card shadow-sm text-center mb-3">
 <div class="card-body">
-
 <h6 class="text-muted">Exhaust Fan</h6>
 <h3 class="fw-bold" id="fanStatus">--</h3>
-
 </div>
 </div>
 
@@ -164,7 +171,6 @@ Refresh Sensor Data
 
 </div>
 </div>
-
 
 <div class="row mt-4">
 
@@ -188,12 +194,36 @@ Temperature History
 
 </section>
 
-
 <script src="script.js"></script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+document.getElementById("refreshBtn").addEventListener("click", function(){
+
+    // ✅ Call your existing sensor update
+    if(typeof updateStatus === "function"){
+        updateStatus();
+    }
+
+    // ✅ Log activity (NO reload)
+    fetch("", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "log_refresh=1"
+    })
+    .then(res => res.text())
+    .then(data => {
+        console.log("Activity logged:", data);
+    });
+
+});
+</script>
 
 </body>
 </html>
