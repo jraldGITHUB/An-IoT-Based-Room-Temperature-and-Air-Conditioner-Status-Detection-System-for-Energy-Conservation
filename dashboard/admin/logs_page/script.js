@@ -48,10 +48,43 @@ table.appendChild(row);
 }
 
 
+// CLEAR LOGS
+document.getElementById("clearLogs").addEventListener("click", function(){
+
+if(confirm("Clear all logs?")){
+
+fetch("clear_logs.php")
+.then(() => {
+alert("Logs cleared");
+loadLogs();
+});
+
+}
+
+});
 
 
+// DOWNLOAD CSV
+function downloadCSV(){
 
+fetch("get_logs.php")
+.then(res => res.json())
+.then(data => {
 
+let csv = "Date,Time,Room,Temp,Exhaust,Aircon,Fan,Runtime\n";
 
+data.forEach(log => {
+csv += `${log.date},${log.time},${log.room},${log.roomTemp},${log.exhaustTemp},${log.aircon},${log.exhaustFan},${log.runtime}\n`;
+});
 
+let blob = new Blob([csv], { type: "text/csv" });
+let url = window.URL.createObjectURL(blob);
 
+let a = document.createElement("a");
+a.href = url;
+a.download = "logs.csv";
+a.click();
+
+});
+
+}

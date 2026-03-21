@@ -55,14 +55,28 @@ if(isset($_POST['log_refresh'])){
 IoT Room Monitor
 </a>
 
-
-
 <div class="collapse navbar-collapse">
 
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
-<a class="nav-link active fw-semibold" href="../user/index.php">Dashboard</a>
+<a class="nav-link active fw-semibold" href="../admin/index.php">Dashboard</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="../admin/logs_page/index.php">Logs</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="../admin/add_monitor_rooms/index.php">Manage Rooms</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="../admin/activity_logs/index.php">Activity logs</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="../admin/account_settings/index.php">Account Settings</a>
 </li>
 
 

@@ -322,4 +322,4 @@ rooms[key].sensor = room.sensor_status === "OFF" ? "INACTIVE" : "ACTIVE";
 }
 
 // every 5 sec sync
-setInterval(refreshSensors,5000);l
+setInterval(refreshSensors,5000);
